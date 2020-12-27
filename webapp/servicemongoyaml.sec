@@ -8,5 +8,7 @@ spec:
   type: NodePort
   ports:
     - port: 27017
+      targetPort: web-port
+      protocol: TCP
   selector:
-      app: mongo-app
+      app: mymongo-app
