@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: mongo-app
   labels:
-    app: mongo-app
+    app: mymongo-app
 spec:
   replicas: 1
   selector:
