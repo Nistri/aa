@@ -1,0 +1,78 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongo-app
+  labels:
+    app: mongo-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+       app: mymongo-app
+  template:
+    metadata:
+      labels:
+        app: mymongo-app
+    spec:
+      containers:
+      - name: mongo-app
+        image: mongo
+        ports:
+          - containerPort: 2727
+            name: mongo-port
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongo-service
+  labels:
+    app: mongo-service
+spec:
+  type: NodePort
+  ports:
+    - port: 27017
+      targetPort: mongo-port
+  selector:
+      app: mymongo-app
+
+
+
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-app
+  labels:
+    app: web-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+       app: web-app
+  template:
+    metadata:
+      labels:
+        app: web-app
+    spec:
+      containers:
+      - name: web-app
+        image: webapp:v1
+        ports:
+          - containerPort: 8080
+            name: web-port
+
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: web-service
+  labels:
+    app: web-service
+spec:
+  type: NodePort
+  ports:
+    - port: 80
+      targetPort: web-port
+      protocol: TCP
+  selector:
+      app: myweb-app
