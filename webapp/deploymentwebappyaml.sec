@@ -5,18 +5,19 @@ metadata:
   labels:
     app: web-app
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
-       app: web-app
+       app: myweb-app
   template:
     metadata:
       labels:
-        app: web-app
+        app: myweb-app
     spec:
       containers:
       - name: web-app
-        image: webserver:v1
+        image: webapp:v1
         ports:
           - containerPort: 8080
             name: web-port
+
