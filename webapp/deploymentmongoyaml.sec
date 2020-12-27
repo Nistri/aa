@@ -8,14 +8,15 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-       app: mongo-app
+       app: my-app
   template:
     metadata:
       labels:
-        app: mongo-app
+        app: my-app
     spec:
       containers:
       - name: mongo-app
-        image: mongo:v1
+        image: mongo
         ports:
           - containerPort: 27017
+            name: web-port
