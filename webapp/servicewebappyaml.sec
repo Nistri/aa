@@ -11,4 +11,4 @@ spec:
       targetPort: web-port
       protocol: TCP
   selector:
-      app: web-app
+      app: myweb-app
