@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: web-app
+  name: hello-app
   labels:
-    app: web-app
+    app: hello-app
 spec:
   replicas: 3
   selector:
     matchLabels:
-       app: myweb-app
+       app: my-app
   template:
     metadata:
       labels:
-        app: myweb-app
+        app: my-app
     spec:
       containers:
-      - name: webserber-app
+      - name: web-app
         image: webapp:v1
         ports:
           - containerPort: 8080
-            name: webserver-port
+            name: web-port
 
