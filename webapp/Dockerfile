@@ -14,7 +14,7 @@ RUN pip install --trusted-host pypi.python.org -r requirements.txt
 EXPOSE 80
 
 # Define environment variable
-ENV NAME JeanHerrera_Group_3
+ENV NAME EinsZwei_Group_23
 
 # Run app.py when the container launches
 CMD python app.py
